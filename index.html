@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plan B | Bar & Lounge Premium en Lloret de Mar</title>
+    <meta
+      name="description"
+      content="Plan B es un bar y lounge premium en Lloret de Mar. Coctelería de autor, gastronomía selecta y ambiente nocturno exclusivo."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <form name="reservas" data-netlify="true" data-netlify-honeypot="botField" hidden>
+      <input type="hidden" name="form-name" value="reservas" />
+      <input name="name" />
+      <input name="email" />
+      <input name="phone" />
+      <input name="date" />
+      <input name="time" />
+      <input name="guests" />
+      <textarea name="notes"></textarea>
+      <input name="botField" />
+    </form>
+
+    <form name="contacto" data-netlify="true" data-netlify-honeypot="botField" hidden>
+      <input type="hidden" name="form-name" value="contacto" />
+      <input name="name" />
+      <input name="email" />
+      <input name="phone" />
+      <textarea name="message"></textarea>
+      <input name="botField" />
+    </form>
+
+    <script type="module" src="src/main.tsx"></script>
+  </body>
+</html>

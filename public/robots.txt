@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://planbbar.com/sitemap.xml
+Host: https://planbbar.com
