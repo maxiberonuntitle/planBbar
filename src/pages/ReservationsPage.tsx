@@ -172,6 +172,7 @@ export default function ReservationsPage() {
                   min={1}
                   {...register('guests', { valueAsNumber: true })}
                   className="rounded-2xl border border-white/10 bg-black/80 px-4 py-4 text-white outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20"
+                  aria-label="Número de personas"
                 />
                 {errors.guests && <span className="text-xs text-red-400">{errors.guests.message}</span>}
               </label>
@@ -183,6 +184,7 @@ export default function ReservationsPage() {
                 rows={4}
                 {...register('notes')}
                 className="rounded-2xl border border-white/10 bg-black/80 px-4 py-4 text-white outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20"
+                aria-label="Comentarios adicionales para la reserva"
               />
               {errors.notes && <span className="text-xs text-red-400">{errors.notes.message}</span>}
             </label>

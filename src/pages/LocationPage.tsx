@@ -38,7 +38,8 @@ export default function LocationPage() {
 
           <div className="aspect-[16/10] overflow-hidden rounded-[32px] border border-white/10 bg-black/70">
             <iframe
-              title="Ubicación Plan B"
+              title="Ubicación de Plan B en Lloret de Mar"
+              aria-label="Mapa interactivo de la ubicación de Plan B"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.2989870393155!2d2.837364315563836!3d41.70773607922513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b084680cf3f2f7%3A0xe6bfcbfd7fde9d14!2sLloret%20de%20Mar!5e0!3m2!1ses!2ses!4v1694562714569!5m2!1ses!2ses"
               className="h-full w-full border-0"
               allowFullScreen

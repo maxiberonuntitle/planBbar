@@ -18,11 +18,11 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        <NavLink to="/" className="text-lg font-bold tracking-[0.35em] uppercase text-cream">
+        <NavLink to="/" className="text-lg font-bold tracking-[0.35em] uppercase text-cream" aria-label="Plan B - Inicio">
           Plan B
         </NavLink>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Navegación principal">
           {links.map((link) => (
             <NavLink
               key={link.href}
@@ -46,9 +46,10 @@ export default function Navbar() {
           type="button"
           className="inline-flex items-center justify-center rounded-full border border-white/10 p-3 text-cream lg:hidden"
           onClick={() => setOpen((current) => !current)}
-          aria-label="Abrir menú"
+          aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+          aria-expanded={open}
         >
-          <span className="text-xl">☰</span>
+          <span className="text-xl" aria-hidden="true">☰</span>
         </button>
       </div>
 
