@@ -2,22 +2,20 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { encodeFormData } from '../lib/netlify';
 import Seo from '../components/layout/Seo';
+import { WHATSAPP_URL, generateContactMessage, encodeWhatsAppMessage } from '../lib/whatsapp';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Ingrese su nombre'),
   email: z.string().email('Email inválido'),
   phone: z.string().optional(),
   message: z.string().min(15, 'Mensaje demasiado corto'),
-  botField: z.string().optional(),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [sent, setSent] = useState(false);
   const {
     register,
     handleSubmit,
@@ -27,36 +25,18 @@ export default function ContactPage() {
     resolver: zodResolver(contactSchema),
   });
 
-  const onSubmit = async (values: ContactFormValues) => {
-    if (values.botField) return;
+  const onSubmit = (values: ContactFormValues) => {
+    const message = generateContactMessage(values);
+    const encodedMessage = encodeWhatsAppMessage(message);
+    const whatsappLink = `${WHATSAPP_URL}?text=${encodedMessage}`;
 
-    const payload = {
-      'form-name': 'contacto',
-      name: values.name,
-      email: values.email,
-      phone: values.phone ?? '',
-      message: values.message,
-      botField: values.botField ?? '',
-    };
+    window.open(whatsappLink, '_blank');
+    setSent(true);
+    reset();
 
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodeFormData(payload),
-      });
-
-      if (!response.ok) {
-        throw new Error('Error al enviar el mensaje.');
-      }
-
-      setSubmitted(true);
-      setErrorMessage('');
-      reset();
-    } catch (error) {
-      setErrorMessage('No se pudo enviar el mensaje. Intenta de nuevo más tarde.');
-      setSubmitted(false);
-    }
+    setTimeout(() => {
+      setSent(false);
+    }, 3000);
   };
 
   return (
@@ -71,7 +51,7 @@ export default function ContactPage() {
           <p className="text-sm uppercase tracking-[0.35em] text-gold">Contacto</p>
           <h1 className="mt-4 text-4xl font-semibold text-white">Hablemos</h1>
           <p className="mt-6 text-base leading-8 text-white/70">
-            ¿Tienes dudas o quieres reservar un evento privado? Escríbenos y te responderemos a la brevedad.
+            ¿Tienes dudas o quieres reservar un evento privado? Contáctanos vía WhatsApp y te responderemos a la brevedad.
           </p>
         </div>
 
@@ -84,18 +64,23 @@ export default function ContactPage() {
               <p>Email: contacto@planbbar.com</p>
               <p>Horario de atención: 18:00 - 03:00</p>
             </div>
+            <div className="mt-10 rounded-3xl border border-white/10 bg-green-600/20 p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green-400">WhatsApp directo</p>
+              <a
+                href={`${WHATSAPP_URL}?text=${encodeWhatsAppMessage('Hola Plan B, tengo una consulta')}`}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-green-700"
+              >
+                💬 WhatsApp +34 388 373 22 57
+              </a>
+            </div>
           </div>
 
           <form
-            name="contacto"
-            method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="botField"
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-6 rounded-[32px] border border-white/10 bg-white/5 p-10 backdrop-blur-xl"
           >
-            <input type="hidden" name="form-name" value="contacto" />
-            <input type="hidden" {...register('botField')} />
             <label className="flex flex-col gap-3 text-sm text-white/70">
               Nombre
               <input
@@ -115,11 +100,12 @@ export default function ContactPage() {
               {errors.email && <span className="text-xs text-red-400">{errors.email.message}</span>}
             </label>
             <label className="flex flex-col gap-3 text-sm text-white/70">
-              Teléfono
+              Teléfono (opcional)
               <input
                 type="tel"
                 {...register('phone')}
                 className="rounded-2xl border border-white/10 bg-black/80 px-4 py-4 text-white outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20"
+                placeholder="+34..."
               />
             </label>
             <label className="flex flex-col gap-3 text-sm text-white/70">
@@ -128,21 +114,23 @@ export default function ContactPage() {
                 rows={5}
                 {...register('message')}
                 className="rounded-2xl border border-white/10 bg-black/80 px-4 py-4 text-white outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20"
+                placeholder="Cuéntanos cómo podemos ayudarte..."
               />
               {errors.message && <span className="text-xs text-red-400">{errors.message.message}</span>}
             </label>
 
-            {errorMessage ? <p className="text-sm text-red-400">{errorMessage}</p> : null}
-            {submitted ? (
-              <p className="rounded-3xl bg-gold/10 p-4 text-sm text-gold">Gracias. Tu mensaje ha sido enviado con éxito.</p>
+            {sent ? (
+              <p className="rounded-3xl bg-green-600/20 p-4 text-sm text-green-400">
+                ✓ Se abrió WhatsApp. Envía tu consulta para que te ayudemos.
+              </p>
             ) : null}
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex w-full items-center justify-center rounded-full bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-black transition disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-black transition disabled:cursor-not-allowed disabled:opacity-60 hover:bg-[#e4c88a]"
             >
-              {submitted ? 'Mensaje enviado' : 'Enviar mensaje'}
+              💬 Enviar por WhatsApp
             </button>
           </form>
         </div>

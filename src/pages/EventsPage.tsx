@@ -1,5 +1,6 @@
 import { events } from '../data/eventsData';
 import Seo from '../components/layout/Seo';
+import { WHATSAPP_URL, generateEventReservationMessage, encodeWhatsAppMessage } from '../lib/whatsapp';
 
 export default function EventsPage() {
   return (
@@ -28,10 +29,12 @@ export default function EventsPage() {
                 <p className="mt-4 text-sm leading-7 text-white/70">{event.summary}</p>
                 <p className="mt-4 text-sm font-semibold text-gold">{event.time}</p>
                 <a
-                  href="/reservas"
-                  className="mt-6 inline-flex rounded-full border border-gold px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-gold transition hover:bg-gold hover:text-black"
+                  href={`${WHATSAPP_URL}?text=${encodeWhatsAppMessage(`Hola Plan B, quiero reservar para el evento: ${event.title} - ${event.date} a las ${event.time}`)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-6 inline-flex rounded-full bg-green-600 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-green-700"
                 >
-                  Reservar evento
+                  💬 Reservar por WhatsApp
                 </a>
               </div>
             </article>

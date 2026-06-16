@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Seo from '../components/layout/Seo';
+import { WHATSAPP_URL, encodeWhatsAppMessage } from '../lib/whatsapp';
 
 export default function HomePage() {
   return (
@@ -27,12 +28,14 @@ export default function HomePage() {
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              to="/reservas"
-              className="inline-flex rounded-full bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-black transition hover:bg-[#e4c88a]"
+            <a
+              href={`${WHATSAPP_URL}?text=${encodeWhatsAppMessage('Hola Plan B, quiero reservar una mesa')}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex rounded-full bg-green-600 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-green-700"
             >
-              Reservar mesa
-            </Link>
+              💬 Reservar Mesa
+            </a>
             <Link
               to="/menu"
               className="inline-flex rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-cream transition hover:border-gold hover:text-gold"
