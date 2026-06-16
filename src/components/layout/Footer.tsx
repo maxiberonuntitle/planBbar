@@ -12,9 +12,10 @@ export default function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div className="space-y-2">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Contacto</h3>
-            <p className="text-sm text-white/70">Carrer de la Platja, 12</p>
-            <p className="text-sm text-white/70">Lloret de Mar, Girona</p>
-            <p className="text-sm text-white/70">+34 972 00 00 00</p>
+            <p className="text-sm text-white/70">Calle Santa Clotilde, 28 - Playa</p>
+            <p className="text-sm text-white/70">17310 Lloret de Mar, Girona</p>
+            <p className="text-sm text-white/70">+34 972 369 250</p>
+            <p className="text-sm text-white/70">info@planbbar.com</p>
           </div>
           <div className="space-y-2">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Horario</h3>

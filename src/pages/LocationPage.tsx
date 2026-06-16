@@ -21,10 +21,11 @@ export default function LocationPage() {
           <div className="rounded-[32px] border border-white/10 bg-white/5 p-10 backdrop-blur-xl">
             <h2 className="text-3xl font-semibold text-white">Datos de la casa</h2>
             <div className="mt-8 space-y-4 text-sm leading-7 text-white/70">
-              <p>Dirección: Carrer de la Platja, 12, Lloret de Mar, Girona</p>
+              <p>Dirección: Calle Santa Clotilde, 28 - Playa</p>
+              <p>Lloret de Mar, 17310 Girona, España</p>
               <p>Horario: Lun - Dom 18:00 - 03:00</p>
-              <p>Teléfono: +34 972 00 00 00</p>
-              <p>Email: reservas@planbbar.com</p>
+              <p>Teléfono: +34 972 369 250</p>
+              <p>Email: info@planbbar.com</p>
             </div>
             <a
               href="https://www.google.com/maps"
