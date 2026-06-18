@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Seo from '../components/layout/Seo';
+import Logo from '../components/common/Logo';
 import { WHATSAPP_URL, encodeWhatsAppMessage } from '../lib/whatsapp';
-import { FadeInOnScroll, ScrollParallax } from '../components/common/ScrollParallax';
+import { FadeInOnScroll } from '../components/common/ScrollParallax';
+import { images } from '../data/images';
 
 export default function HomePage() {
   return (
@@ -12,8 +14,18 @@ export default function HomePage() {
         description="Plan B es el bar lounge premium de Lloret de Mar con coctelería de autor, gastronomía selecta y ambiente nocturno exclusivo."
         path="/"
       />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(208,178,123,0.1),transparent_35%)]" />
-      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-28 lg:px-8">
+      <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+        <img
+          src={images.exterior}
+          alt=""
+          className="h-full w-full object-cover object-center opacity-70"
+          aria-hidden="true"
+          fetchPriority="high"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-black/50" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/60" />
+      </div>
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-28 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -21,9 +33,8 @@ export default function HomePage() {
           className="mx-auto w-full max-w-3xl text-center"
         >
           <span className="inline-block text-sm uppercase tracking-[0.4em] text-gold">Bar & Lounge</span>
-          <h1 className="mt-6 text-5xl font-black uppercase tracking-[0.2em] text-white sm:text-6xl lg:text-7xl">
-            Plan B
-          </h1>
+          <h1 className="sr-only">Plan B Bar & Lounge</h1>
+          <Logo className="mx-auto mt-6 h-28 w-auto sm:h-36 lg:h-44" />
           <p className="mt-8 text-base leading-8 text-white/70 sm:text-lg">
             Experiencia premium en Lloret de Mar. Coctelería de autor, gastronomía selecta y ambiente nocturno exclusivo.
           </p>
@@ -89,7 +100,14 @@ export default function HomePage() {
 
         <div className="grid gap-8 lg:grid-cols-2">
           <FadeInOnScroll delay={0.1}>
-            <div className="rounded-[32px] border border-white/10 bg-white/5 p-10 backdrop-blur-xl hover:border-gold/30 transition-colors">
+            <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-xl transition-colors hover:border-gold/30">
+              <img
+                src={images.comida[0]}
+                alt="Gastronomía Plan B"
+                className="aspect-[16/9] w-full object-cover"
+                loading="lazy"
+              />
+              <div className="p-10">
               <p className="text-sm uppercase tracking-[0.35em] text-gold">Destacados</p>
               <h2 className="mt-4 text-3xl font-semibold text-white">Sabores y sensaciones</h2>
               <p className="mt-4 text-sm leading-7 text-white/70">
@@ -110,6 +128,7 @@ export default function HomePage() {
                   </motion.div>
                 ))}
               </div>
+              </div>
             </div>
           </FadeInOnScroll>
           <FadeInOnScroll delay={0.2}>
@@ -123,13 +142,27 @@ export default function HomePage() {
               </div>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 <motion.div
-                  className="aspect-[4/3] rounded-3xl bg-[url('https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center hover:scale-105 transition-transform overflow-hidden"
-                  whileHover={{ scale: 1.08 }}
-                />
+                  className="aspect-[4/3] overflow-hidden rounded-3xl transition-transform hover:scale-105"
+                  whileHover={{ scale: 1.03 }}
+                >
+                  <img
+                    src={images.interior}
+                    alt="Interior lounge de Plan B"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </motion.div>
                 <motion.div
-                  className="aspect-[4/3] rounded-3xl bg-[url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center hover:scale-105 transition-transform overflow-hidden"
-                  whileHover={{ scale: 1.08 }}
-                />
+                  className="aspect-[4/3] overflow-hidden rounded-3xl transition-transform hover:scale-105"
+                  whileHover={{ scale: 1.03 }}
+                >
+                  <img
+                    src={images.barra}
+                    alt="Barra de coctelería Plan B"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </motion.div>
               </div>
             </div>
           </FadeInOnScroll>
@@ -143,11 +176,6 @@ export default function HomePage() {
                 <h2 className="text-3xl font-semibold text-white">Próximas noches</h2>
               </div>
               {[
-                {
-                  title: 'Noche de DJ',
-                  description: 'Música electrónica suave y cócteles de autor.',
-                  date: 'Sábado 22 Jun',
-                },
                 {
                   title: 'Cocktail tasting',
                   description: 'Selección exclusiva de creaciones premium.',
