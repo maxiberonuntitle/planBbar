@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Seo from '../components/layout/Seo';
 import MenuSection from '../components/menu/MenuSection';
@@ -19,7 +19,7 @@ const COCKTAIL_SPIRITS: CocktailSpirit[] = ['vodka', 'gin', 'whisky', 'ron'];
 
 function ItemGrid({ items }: { items: MenuItemType[] }) {
   return (
-    <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-2">
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-4">
       {items.map((item) => (
         <MenuItem key={item.id} item={item} />
       ))}
@@ -49,30 +49,143 @@ function TagList({ title, items, accent }: { title: string; items: string[]; acc
 export default function Menu() {
   const [activeSection, setActiveSection] = useState(MENU_SECTIONS[0].id);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible?.target.id) {
-          setActiveSection(visible.target.id);
-        }
-      },
-      { rootMargin: '-30% 0px -55% 0px', threshold: [0, 0.25, 0.5] },
-    );
-
-    MENU_SECTIONS.forEach(({ id }) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  const selectedSectionContent = (() => {
+    switch (activeSection) {
+      case 'entrantes':
+        return (
+          <MenuSection id="entrantes" title="Entrantes">
+            <ItemGrid items={menuData.entrantes} />
+          </MenuSection>
+        );
+      case 'ensaladas':
+        return (
+          <MenuSection id="ensaladas" title="Ensaladas">
+            <ItemGrid items={menuData.ensaladas} />
+          </MenuSection>
+        );
+      case 'hamburguesas':
+        return (
+          <MenuSection
+            id="hamburguesas"
+            title="Hamburguesas"
+            description="Elige tu pan, carne y uno de nuestros modelos exclusivos PLAN B."
+          >
+            <BurgerCard burgers={menuData.hamburguesas} />
+          </MenuSection>
+        );
+      case 'carnes':
+        return (
+          <MenuSection id="carnes" title="Carnes">
+            <ItemGrid items={menuData.carnes} />
+          </MenuSection>
+        );
+      case 'pescados':
+        return (
+          <MenuSection id="pescados" title="Pescados">
+            <ItemGrid items={menuData.pescados} />
+          </MenuSection>
+        );
+      case 'pasta':
+        return (
+          <MenuSection id="pasta" title="Pasta" description="Elige tipo de pasta y salsa. Precio base por ración.">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between rounded-2xl border border-gold/30 bg-gold/10 p-5">
+                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Precio base</span>
+                <PriceTag precio={menuData.pasta.precioBase} className="text-lg" />
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <TagList title="Tipos de pasta" items={menuData.pasta.tipos} />
+                <TagList title="Salsas" items={menuData.pasta.salsas} />
+              </div>
+            </div>
+          </MenuSection>
+        );
+      case 'pizzas':
+        return (
+          <MenuSection
+            id="pizzas"
+            title="Pizzas"
+            description="Personaliza tu pizza con bases, quesos e ingredientes premium."
+          >
+            <div className="space-y-4">
+              <div className="flex items-center justify-between rounded-2xl border border-gold/30 bg-gold/10 p-5">
+                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Precio base</span>
+                <PriceTag precio={menuData.pizzas.precioBase} className="text-lg" />
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <TagList title="Bases disponibles" items={menuData.pizzas.bases} />
+                <TagList title="Quesos disponibles" items={menuData.pizzas.quesos} />
+                <TagList
+                  title="Ingredientes +1,50 €"
+                  items={menuData.pizzas.ingredientes150}
+                  accent="Suplemento por ingrediente"
+                />
+                <TagList
+                  title="Ingredientes +2 €"
+                  items={menuData.pizzas.ingredientes200}
+                  accent="Suplemento por ingrediente"
+                />
+              </div>
+            </div>
+          </MenuSection>
+        );
+      case 'bebidas':
+        return (
+          <MenuSection id="bebidas" title="Bebidas">
+            <ItemGrid items={menuData.bebidas} />
+          </MenuSection>
+        );
+      case 'cervezas':
+        return (
+          <MenuSection id="cervezas" title="Cervezas">
+            <ItemGrid items={menuData.cervezas} />
+          </MenuSection>
+        );
+      case 'vinos':
+        return (
+          <MenuSection id="vinos" title="Sangría y vinos">
+            <ItemGrid items={menuData.vinos} />
+          </MenuSection>
+        );
+      case 'botellas':
+        return (
+          <MenuSection id="botellas" title="Botellas">
+            <ItemGrid items={menuData.botellas} />
+          </MenuSection>
+        );
+      case 'cubatas':
+        return (
+          <MenuSection id="cubatas" title="Cubatas">
+            <ItemGrid items={menuData.cubatas} />
+          </MenuSection>
+        );
+      case 'cocktails':
+        return (
+          <MenuSection
+            id="cocktails"
+            title="Cocktails"
+            description={`Todos nuestros cócteles de autor a ${formatPrice(menuData.cocktails.precio)}.`}
+          >
+            <div className="space-y-10">
+              {COCKTAIL_SPIRITS.filter((spirit) => menuData.cocktails[spirit].length > 0).map((spirit) => (
+                <div key={spirit}>
+                  <h3 className="mb-4 text-lg font-semibold uppercase tracking-[0.25em] text-gold">
+                    {COCKTAIL_SPIRIT_LABELS[spirit]}
+                  </h3>
+                  <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+                    {menuData.cocktails[spirit].map((cocktail) => (
+                      <CocktailCard key={cocktail.id} cocktail={cocktail} precio={menuData.cocktails.precio} />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </MenuSection>
+        );
+      default:
+        return null;
+    }
+  })();
 
   return (
     <section className="bg-black pt-28 text-cream">
@@ -128,13 +241,13 @@ export default function Menu() {
           aria-label="Categorías del menú"
           className="sticky top-[72px] z-30 -mx-4 mt-8 border-b border-white/10 bg-black/90 px-4 py-3 backdrop-blur-xl sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
         >
-          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+          <div className="flex flex-wrap justify-center gap-2 pb-1">
             {MENU_SECTIONS.map((section) => (
               <button
                 key={section.id}
                 type="button"
-                onClick={() => scrollToSection(section.id)}
-                className={`shrink-0 rounded-full border px-4 py-2 text-xs font-medium uppercase tracking-[0.12em] transition duration-300 sm:text-sm ${
+                onClick={() => setActiveSection(section.id)}
+                className={`rounded-full border px-4 py-2 text-xs font-medium uppercase tracking-[0.12em] transition duration-300 sm:text-sm ${
                   activeSection === section.id
                     ? 'border-gold bg-gold/15 text-gold'
                     : 'border-white/10 bg-white/5 text-white/70 hover:border-gold/40 hover:text-gold'
@@ -146,111 +259,8 @@ export default function Menu() {
           </div>
         </nav>
 
-        <div className="mt-12 space-y-16 sm:space-y-20">
-          <MenuSection id="entrantes" title="Entrantes">
-            <ItemGrid items={menuData.entrantes} />
-          </MenuSection>
-
-          <MenuSection id="ensaladas" title="Ensaladas">
-            <ItemGrid items={menuData.ensaladas} />
-          </MenuSection>
-
-          <MenuSection
-            id="hamburguesas"
-            title="Hamburguesas"
-            description="Elige tu pan, carne y uno de nuestros modelos exclusivos PLAN B."
-          >
-            <BurgerCard burgers={menuData.hamburguesas} />
-          </MenuSection>
-
-          <MenuSection id="carnes" title="Carnes">
-            <ItemGrid items={menuData.carnes} />
-          </MenuSection>
-
-          <MenuSection id="pescados" title="Pescados">
-            <ItemGrid items={menuData.pescados} />
-          </MenuSection>
-
-          <MenuSection id="pasta" title="Pasta" description="Elige tipo de pasta y salsa. Precio base por ración.">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between rounded-2xl border border-gold/30 bg-gold/10 p-5">
-                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Precio base</span>
-                <PriceTag precio={menuData.pasta.precioBase} className="text-lg" />
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <TagList title="Tipos de pasta" items={menuData.pasta.tipos} />
-                <TagList title="Salsas" items={menuData.pasta.salsas} />
-              </div>
-            </div>
-          </MenuSection>
-
-          <MenuSection
-            id="pizzas"
-            title="Pizzas"
-            description="Personaliza tu pizza con bases, quesos e ingredientes premium."
-          >
-            <div className="space-y-4">
-              <div className="flex items-center justify-between rounded-2xl border border-gold/30 bg-gold/10 p-5">
-                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Precio base</span>
-                <PriceTag precio={menuData.pizzas.precioBase} className="text-lg" />
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <TagList title="Bases disponibles" items={menuData.pizzas.bases} />
-                <TagList title="Quesos disponibles" items={menuData.pizzas.quesos} />
-                <TagList
-                  title="Ingredientes +1,50 €"
-                  items={menuData.pizzas.ingredientes150}
-                  accent="Suplemento por ingrediente"
-                />
-                <TagList
-                  title="Ingredientes +2 €"
-                  items={menuData.pizzas.ingredientes200}
-                  accent="Suplemento por ingrediente"
-                />
-              </div>
-            </div>
-          </MenuSection>
-
-          <MenuSection id="bebidas" title="Bebidas">
-            <ItemGrid items={menuData.bebidas} />
-          </MenuSection>
-
-          <MenuSection id="cervezas" title="Cervezas">
-            <ItemGrid items={menuData.cervezas} />
-          </MenuSection>
-
-          <MenuSection id="vinos" title="Sangría y vinos">
-            <ItemGrid items={menuData.vinos} />
-          </MenuSection>
-
-          <MenuSection id="botellas" title="Botellas">
-            <ItemGrid items={menuData.botellas} />
-          </MenuSection>
-
-          <MenuSection id="cubatas" title="Cubatas">
-            <ItemGrid items={menuData.cubatas} />
-          </MenuSection>
-
-          <MenuSection
-            id="cocktails"
-            title="Cocktails"
-            description={`Todos nuestros cócteles de autor a ${formatPrice(menuData.cocktails.precio)}.`}
-          >
-            <div className="space-y-10">
-              {COCKTAIL_SPIRITS.filter((spirit) => menuData.cocktails[spirit].length > 0).map((spirit) => (
-                <div key={spirit}>
-                  <h3 className="mb-4 text-lg font-semibold uppercase tracking-[0.25em] text-gold">
-                    {COCKTAIL_SPIRIT_LABELS[spirit]}
-                  </h3>
-                  <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-                    {menuData.cocktails[spirit].map((cocktail) => (
-                      <CocktailCard key={cocktail.id} cocktail={cocktail} precio={menuData.cocktails.precio} />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </MenuSection>
+        <div className="mt-12">
+          {selectedSectionContent}
         </div>
       </div>
     </section>

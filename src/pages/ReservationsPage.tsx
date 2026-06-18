@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Seo from '../components/layout/Seo';
-import { WHATSAPP_URL, generateReservationMessage, encodeWhatsAppMessage } from '../lib/whatsapp';
+import { WHATSAPP_URL, WHATSAPP_PHONE_DISPLAY, generateReservationMessage, encodeWhatsAppMessage } from '../lib/whatsapp';
 
 const reservationSchema = z.object({
   name: z.string().min(2, 'Ingrese su nombre'),
@@ -75,19 +75,11 @@ export default function ReservationsPage() {
             <h2 className="text-3xl font-semibold text-white">Horarios</h2>
             <div className="mt-8 space-y-4 text-sm leading-7 text-white/70">
               <p>
-                <span className="font-semibold text-gold">Lunes - Jueves</span>
+                <span className="font-semibold text-gold">Lunes - Domingo</span>
                 <br />
-                18:00 - 03:00
-              </p>
-              <p>
-                <span className="font-semibold text-gold">Viernes - Sábado</span>
+                13:00 - 16:00
                 <br />
-                18:00 - 04:00
-              </p>
-              <p>
-                <span className="font-semibold text-gold">Domingo</span>
-                <br />
-                18:00 - 03:00
+                17:00 - 01:00
               </p>
             </div>
 
@@ -99,7 +91,7 @@ export default function ReservationsPage() {
                 rel="noreferrer"
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-green-700"
               >
-                💬 WhatsApp +34 388 373 22 57
+                💬 WhatsApp {WHATSAPP_PHONE_DISPLAY}
               </a>
             </div>
           </div>

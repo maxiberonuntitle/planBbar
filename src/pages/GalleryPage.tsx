@@ -5,6 +5,7 @@ import SectionTitle from '../components/common/SectionTitle';
 import GalleryCard from '../components/gallery/GalleryCard';
 import Seo from '../components/layout/Seo';
 import { FadeInOnScroll } from '../components/common/ScrollParallax';
+import { images } from '../data/images';
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -27,12 +28,21 @@ export default function GalleryPage() {
       />
       <div className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
         <FadeInOnScroll>
-          <div className="rounded-[32px] border border-white/10 bg-white/5 p-10 backdrop-blur-xl lg:p-16">
-            <SectionTitle
-              eyebrow="Galería"
-              title="Ambiente e inspiración"
-              description="Navega nuestras categorías visuales y descubre el estilo nocturno que define a Plan B."
+          <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-xl">
+            <img
+              src={images.barra}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover opacity-25"
+              aria-hidden="true"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/50" />
+            <div className="relative p-10 lg:p-16">
+              <SectionTitle
+                eyebrow="Galería"
+                title="Ambiente e inspiración"
+                description="Navega nuestras categorías visuales y descubre el estilo nocturno que define a Plan B."
+              />
+            </div>
           </div>
         </FadeInOnScroll>
 

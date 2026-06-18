@@ -1,4 +1,5 @@
 export const WHATSAPP_NUMBER = '393883732257';
+export const WHATSAPP_PHONE_DISPLAY = '+39 388 373 22 57';
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export function encodeWhatsAppMessage(message: string): string {
@@ -30,7 +31,6 @@ export function generateReservationMessage(data: {
 
 export function generateContactMessage(data: {
   name: string;
-  email: string;
   phone?: string;
   message: string;
 }): string {
@@ -38,7 +38,6 @@ export function generateContactMessage(data: {
     '💬 *Mensaje de Contacto - Plan B*',
     '',
     `👤 Nombre: ${data.name}`,
-    `📧 Email: ${data.email}`,
     ...(data.phone ? [`📱 Teléfono: ${data.phone}`] : []),
     '',
     `📝 Mensaje:\n${data.message}`,

@@ -3,11 +3,11 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Seo from '../components/layout/Seo';
-import { WHATSAPP_URL, generateContactMessage, encodeWhatsAppMessage } from '../lib/whatsapp';
+import { WHATSAPP_URL, WHATSAPP_PHONE_DISPLAY, generateContactMessage, encodeWhatsAppMessage } from '../lib/whatsapp';
+import { siteMetadata } from '../data/siteData';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Ingrese su nombre'),
-  email: z.string().email('Email inválido'),
   phone: z.string().optional(),
   message: z.string().min(15, 'Mensaje demasiado corto'),
 });
@@ -60,9 +60,8 @@ export default function ContactPage() {
             <h2 className="text-3xl font-semibold text-white">Datos de contacto</h2>
             <div className="mt-8 space-y-4 text-sm leading-7 text-white/70">
               <p>Dirección: Carrer de la Platja, 12, Lloret de Mar</p>
-              <p>Teléfono: +34 972 00 00 00</p>
-              <p>Email: contacto@planbbar.com</p>
-              <p>Horario de atención: 18:00 - 03:00</p>
+              <p>Teléfono: {siteMetadata.phone}</p>
+              <p>Horario de atención: 13:00 - 16:00 y 17:00 - 01:00</p>
             </div>
             <div className="mt-10 rounded-3xl border border-white/10 bg-green-600/20 p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green-400">WhatsApp directo</p>
@@ -72,7 +71,7 @@ export default function ContactPage() {
                 rel="noreferrer"
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-green-700"
               >
-                💬 WhatsApp +34 388 373 22 57
+                💬 WhatsApp {WHATSAPP_PHONE_DISPLAY}
               </a>
             </div>
           </div>
@@ -89,15 +88,6 @@ export default function ContactPage() {
                 className="rounded-2xl border border-white/10 bg-black/80 px-4 py-4 text-white outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20"
               />
               {errors.name && <span className="text-xs text-red-400">{errors.name.message}</span>}
-            </label>
-            <label className="flex flex-col gap-3 text-sm text-white/70">
-              Email
-              <input
-                type="email"
-                {...register('email')}
-                className="rounded-2xl border border-white/10 bg-black/80 px-4 py-4 text-white outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20"
-              />
-              {errors.email && <span className="text-xs text-red-400">{errors.email.message}</span>}
             </label>
             <label className="flex flex-col gap-3 text-sm text-white/70">
               Teléfono (opcional)

@@ -21,9 +21,14 @@ export default function EventsPage() {
 
         <div className="mt-16 grid gap-10 lg:grid-cols-3">
           {events.map((event) => (
-            <article key={event.id} className="rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-              <div className="rounded-3xl bg-[url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center p-8"> </div>
-              <div className="mt-6">
+            <article key={event.id} className="overflow-hidden rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-xl">
+              <img
+                src={event.image}
+                alt={event.title}
+                className="aspect-[16/10] w-full object-cover"
+                loading="lazy"
+              />
+              <div className="p-8">
                 <p className="text-xs uppercase tracking-[0.35em] text-gold">{event.date}</p>
                 <h2 className="mt-3 text-2xl font-semibold text-white">{event.title}</h2>
                 <p className="mt-4 text-sm leading-7 text-white/70">{event.summary}</p>

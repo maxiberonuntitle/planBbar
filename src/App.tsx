@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import MenuPage from './pages/MenuPage';
+import Menu from './pages/Menu';
 import GalleryPage from './pages/GalleryPage';
 import EventsPage from './pages/EventsPage';
 import ReservationsPage from './pages/ReservationsPage';
@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/sobre-nosotros" element={<AboutPage />} />
-        <Route path="/menu" element={<MenuPage />} />
+        <Route path="/menu" element={<Menu />} />
         <Route path="/galeria" element={<GalleryPage />} />
         <Route path="/eventos" element={<EventsPage />} />
         <Route path="/reservas" element={<ReservationsPage />} />

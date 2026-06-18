@@ -7,12 +7,12 @@ type GalleryCardProps = {
 export default function GalleryCard({ image }: GalleryCardProps) {
   return (
     <article className="group overflow-hidden rounded-[32px] border border-white/10 bg-black/70 transition hover:shadow-soft">
-      <figure className="relative overflow-hidden">
-        <div
-          className="aspect-[4/3] bg-cover bg-center transition duration-500 group-hover:scale-105"
-          style={{ backgroundImage: `url(${image.src})` }}
-          role="img"
-          aria-label={image.title}
+        <figure className="relative overflow-hidden">
+        <img
+          src={image.src}
+          alt={image.title}
+          className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105"
+          loading="lazy"
         />
       </figure>
       <div className="p-6">

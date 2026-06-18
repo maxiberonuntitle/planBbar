@@ -1,4 +1,6 @@
 import Seo from '../components/layout/Seo';
+import { siteMetadata } from '../data/siteData';
+import { images } from '../data/images';
 
 export default function LocationPage() {
   return (
@@ -9,12 +11,20 @@ export default function LocationPage() {
         path="/ubicacion"
       />
       <div className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
-        <div className="rounded-[32px] border border-white/10 bg-white/5 p-10 backdrop-blur-xl lg:p-16">
-          <p className="text-sm uppercase tracking-[0.35em] text-gold">Ubicación</p>
-          <h1 className="mt-4 text-4xl font-semibold text-white">Encuéntranos en Lloret de Mar</h1>
-          <p className="mt-6 text-base leading-8 text-white/70">
-            Visítanos en una ubicación privilegiada junto a la playa, con acceso directo a la mejor vida nocturna de la ciudad.
-          </p>
+        <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-xl">
+          <img
+            src={images.exterior}
+            alt="Ubicación de Plan B en Lloret de Mar"
+            className="aspect-[21/9] w-full object-cover"
+            loading="lazy"
+          />
+          <div className="p-10 backdrop-blur-xl lg:p-16">
+            <p className="text-sm uppercase tracking-[0.35em] text-gold">Ubicación</p>
+            <h1 className="mt-4 text-4xl font-semibold text-white">Encuéntranos en Lloret de Mar</h1>
+            <p className="mt-6 text-base leading-8 text-white/70">
+              Visítanos en una ubicación privilegiada junto a la playa, con acceso directo a la mejor vida nocturna de la ciudad.
+            </p>
+          </div>
         </div>
 
         <div className="mt-16 grid gap-10 lg:grid-cols-2">
@@ -23,8 +33,8 @@ export default function LocationPage() {
             <div className="mt-8 space-y-4 text-sm leading-7 text-white/70">
               <p>Dirección: Calle Santa Clotilde, 28 - Playa</p>
               <p>Lloret de Mar, 17310 Girona, España</p>
-              <p>Horario: Lun - Dom 18:00 - 03:00</p>
-              <p>Teléfono: +34 972 369 250</p>
+              <p>Horario: Lun - Dom 13:00 - 16:00 y 17:00 - 01:00</p>
+              <p>Teléfono: {siteMetadata.phone}</p>
               <p>Email: info@planbbar.com</p>
             </div>
             <a

@@ -93,8 +93,14 @@ export default function Seo({ title, description, path, image }: SeoProps) {
         {
           '@type': 'OpeningHoursSpecification',
           dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-          opens: '18:00',
-          closes: '03:00',
+          opens: '13:00',
+          closes: '16:00',
+        },
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+          opens: '17:00',
+          closes: '01:00',
         },
       ],
       priceRange: '€€',

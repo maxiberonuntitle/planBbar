@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import Logo from '../common/Logo';
 
 const links = [
   { label: 'Inicio', href: '/' },
@@ -18,8 +19,8 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        <NavLink to="/" className="text-lg font-bold tracking-[0.35em] uppercase text-cream" aria-label="Plan B - Inicio">
-          Plan B
+        <NavLink to="/" className="shrink-0 transition opacity-90 hover:opacity-100" aria-label="Plan B - Inicio">
+          <Logo className="h-9 w-auto object-contain sm:h-11" />
         </NavLink>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Navegación principal">
