@@ -18,10 +18,26 @@ export default function HomePage() {
         <img
           src={images.exterior}
           alt=""
-          className="h-full w-full object-cover object-center opacity-70"
+          className="h-full w-full object-contain object-top opacity-70 sm:object-cover sm:object-center"
           aria-hidden="true"
           fetchPriority="high"
         />
+        <div className="pointer-events-none absolute left-4 top-16 h-40 w-40 overflow-hidden rounded-full blur-3xl opacity-25 sm:left-10 sm:top-20 sm:h-56 sm:w-56">
+          <img
+            src={images.coctails[0]}
+            alt=""
+            className="h-full w-full object-cover"
+            aria-hidden="true"
+          />
+        </div>
+        <div className="pointer-events-none absolute right-4 bottom-16 h-40 w-40 overflow-hidden rounded-full blur-3xl opacity-25 sm:right-10 sm:bottom-20 sm:h-56 sm:w-56">
+          <img
+            src={images.coctails[1]}
+            alt=""
+            className="h-full w-full object-cover"
+            aria-hidden="true"
+          />
+        </div>
         <div className="pointer-events-none absolute inset-0 bg-black/50" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/60" />
       </div>
