@@ -59,7 +59,7 @@ export default function ContactPage() {
           <div className="rounded-[32px] border border-white/10 bg-black/70 p-10">
             <h2 className="text-3xl font-semibold text-white">Datos de contacto</h2>
             <div className="mt-8 space-y-4 text-sm leading-7 text-white/70">
-              <p>Dirección: Carrer de la Platja, 12, Lloret de Mar</p>
+              <p>Dirección: Av. de Joan Llaverias, 47, Lloret de Mar</p>
               <p>Teléfono: {siteMetadata.phone}</p>
               <p>Horario de atención: 13:00 - 16:00 y 17:00 - 01:00</p>
             </div>
