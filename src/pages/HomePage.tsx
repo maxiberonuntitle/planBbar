@@ -62,7 +62,7 @@ export default function HomePage() {
               rel="noreferrer"
               className="inline-flex rounded-full bg-green-600 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-green-700"
             >
-              💬 Reservar Mesa
+               Reservar Mesa
             </a>
             <Link
               to="/menu"
