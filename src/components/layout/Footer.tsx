@@ -8,14 +8,14 @@ export default function Footer() {
         <div className="space-y-4">
           <Logo className="h-12 w-auto" />
           <p className="max-w-md text-sm leading-7 text-white/80">
-            Bar & Lounge premium en Lloret de Mar. Coctelería de autor, ambiente nocturno y gastronomía selecta.
+            Bar & Pizzería en Lloret de Mar. Coctelería de autor, ambiente nocturno y gastronomía selecta.
           </p>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div className="space-y-2">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Contacto</h3>
-            <p className="text-sm text-white/70">Calle Santa Clotilde, 28 - Playa</p>
+            <p className="text-sm text-white/70">Av. de Joan Llaverias, 47 - Playa</p>
             <p className="text-sm text-white/70">17310 Lloret de Mar, Girona</p>
             <p className="text-sm text-white/70">{siteMetadata.phone}</p>
           </div>
