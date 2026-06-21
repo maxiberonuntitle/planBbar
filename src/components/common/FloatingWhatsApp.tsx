@@ -1,22 +1,18 @@
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { WHATSAPP_URL } from '../../lib/whatsapp';
 
 export default function FloatingWhatsApp() {
+  const { t } = useTranslation();
+
   return (
-    <motion.a
+    <a
       href={WHATSAPP_URL}
       target="_blank"
       rel="noreferrer"
-      className="fixed bottom-6 right-6 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 transition"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      aria-label="Contactar por WhatsApp"
+      className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition hover:bg-green-600 hover:scale-110 active:scale-95"
+      aria-label={t('common.contactWhatsApp')}
     >
       <span className="text-2xl">💬</span>
-    </motion.a>
+    </a>
   );
 }

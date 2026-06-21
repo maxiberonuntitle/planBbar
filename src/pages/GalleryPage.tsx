@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { galleryCategories, galleryImages } from '../data/galleryData';
 import SectionTitle from '../components/common/SectionTitle';
 import GalleryCard from '../components/gallery/GalleryCard';
@@ -8,9 +9,11 @@ import { FadeInOnScroll } from '../components/common/ScrollParallax';
 import { images } from '../data/images';
 
 export default function GalleryPage() {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('all');
+
   const categories = useMemo(
-    () => [{ id: 'all', title: 'Todas' }, ...galleryCategories],
+    () => [{ id: 'all' }, ...galleryCategories],
     [],
   );
 
@@ -21,27 +24,14 @@ export default function GalleryPage() {
 
   return (
     <section className="bg-black pt-28 text-cream">
-      <Seo
-        title="Galería - Bar Plan B"
-        description="Galería del bar Plan B en Lloret de Mar. Descubre el ambiente, la terraza y la coctelería premium."
-        path="/galeria"
-      />
+      <Seo page="gallery" path="/galeria" />
       <div className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
         <FadeInOnScroll>
           <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-xl">
-            <img
-              src={images.barra}
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover opacity-25"
-              aria-hidden="true"
-            />
+            <img src={images.barra} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" aria-hidden="true" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/50" />
             <div className="relative p-10 lg:p-16">
-              <SectionTitle
-                eyebrow="Galería"
-                title="Ambiente e inspiración"
-                description="Navega nuestras categorías visuales y descubre el estilo nocturno que define a Plan B."
-              />
+              <SectionTitle eyebrow={t('gallery.eyebrow')} title={t('gallery.title')} description={t('gallery.description')} />
             </div>
           </div>
         </FadeInOnScroll>
@@ -61,28 +51,16 @@ export default function GalleryPage() {
                     : 'border-white/10 bg-white/5 hover:border-gold hover:text-gold'
                 }`}
               >
-                {category.title}
+                {category.id === 'all' ? t('common.all') : t(`gallery.categories.${category.id}`)}
               </motion.button>
             ))}
           </div>
 
-          <motion.div
-            className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ staggerChildren: 0.05, delayChildren: 0.1 }}
-          >
-            {visibleImages.map((image, idx) => (
-              <motion.div
-                key={image.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05, duration: 0.4 }}
-              >
-                <GalleryCard image={image} />
-              </motion.div>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {visibleImages.map((image) => (
+              <GalleryCard key={image.id} image={image} />
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

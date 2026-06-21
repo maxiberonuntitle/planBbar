@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
-import { siteMetadata } from '../../data/siteData';
+import { useTranslation } from 'react-i18next';
+import { buildSeoGraph } from '../../data/siteData';
 
 type SeoProps = {
-  title?: string;
-  description?: string;
+  page?: 'home' | 'menu' | 'events' | 'about' | 'gallery' | 'reservations' | 'location' | 'contact';
   path?: string;
   image?: string;
+  keywords?: string;
 };
 
 function setMeta(name: string, content: string) {
@@ -29,26 +30,40 @@ function setOpenGraph(property: string, content: string) {
 }
 
 function setJsonLd(content: string) {
-  let element = document.querySelector("script[type='application/ld+json'][data-jsonld='local-business']");
+  let element = document.querySelector("script[type='application/ld+json'][data-jsonld='seo-graph']");
   if (!element) {
     element = document.createElement('script');
     element.setAttribute('type', 'application/ld+json');
-    element.setAttribute('data-jsonld', 'local-business');
+    element.setAttribute('data-jsonld', 'seo-graph');
     document.head.appendChild(element);
   }
   element.textContent = content;
 }
 
-export default function Seo({ title, description, path, image }: SeoProps) {
-  useEffect(() => {
-    const pageTitle = title ? `${title} | ${siteMetadata.title}` : siteMetadata.title;
-    const pageDescription = description || siteMetadata.description;
-    const pageUrl = path ? `${siteMetadata.url}${path}` : `${siteMetadata.url}${window.location.pathname}`;
-    const pageImage = image || siteMetadata.image;
+export default function Seo({ page, path, image, keywords }: SeoProps) {
+  const { t, i18n } = useTranslation();
 
+  useEffect(() => {
+    const pageTitle = page
+      ? `${t(`seo.pages.${page}.title`)} | ${t('seo.siteTitle')}`
+      : t('seo.siteTitle');
+    const pageDescription = page ? t(`seo.pages.${page}.description`) : t('seo.siteDescription');
+    const pageKeywords =
+      keywords ??
+      (page ? t(`seo.pages.${page}.keywords`, { defaultValue: t('seo.siteKeywords') }) : t('seo.siteKeywords'));
+    const pageUrl = path ? `https://planbbar.com${path}` : `https://planbbar.com${window.location.pathname}`;
+    const pageImage = image ?? 'https://planbbar.com/images/exterior1.jpg';
+    const locale = i18n.language === 'fr' ? 'fr_FR' : i18n.language === 'en' ? 'en_GB' : 'es_ES';
+    const htmlLang = i18n.language?.slice(0, 2) ?? 'es';
+
+    document.documentElement.lang = htmlLang;
     document.title = pageTitle;
 
     setMeta('description', pageDescription);
+    setMeta('keywords', pageKeywords);
+    setMeta('geo.region', 'ES-CT');
+    setMeta('geo.placename', 'Lloret de Mar');
+    setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', pageTitle);
     setMeta('twitter:description', pageDescription);
     setMeta('twitter:image', pageImage);
@@ -58,6 +73,8 @@ export default function Seo({ title, description, path, image }: SeoProps) {
     setOpenGraph('og:url', pageUrl);
     setOpenGraph('og:image', pageImage);
     setOpenGraph('og:type', 'website');
+    setOpenGraph('og:locale', locale);
+    setOpenGraph('og:site_name', 'Plan B');
 
     let canonical = document.querySelector("link[rel='canonical']");
     if (!canonical) {
@@ -67,47 +84,8 @@ export default function Seo({ title, description, path, image }: SeoProps) {
     }
     canonical.setAttribute('href', pageUrl);
 
-    const jsonLd = {
-      '@context': 'https://schema.org',
-      '@type': 'BarOrPub',
-      name: siteMetadata.title,
-      description: pageDescription,
-      url: siteMetadata.url,
-      telephone: siteMetadata.phone,
-      email: siteMetadata.email,
-      image: pageImage,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: siteMetadata.streetAddress,
-        addressLocality: siteMetadata.addressLocality,
-        addressRegion: siteMetadata.addressRegion,
-        postalCode: siteMetadata.postalCode,
-        addressCountry: siteMetadata.addressCountry,
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: siteMetadata.latitude,
-        longitude: siteMetadata.longitude,
-      },
-      openingHoursSpecification: [
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-          opens: '13:00',
-          closes: '16:00',
-        },
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-          opens: '17:00',
-          closes: '01:00',
-        },
-      ],
-      priceRange: '€€',
-    };
-
-    setJsonLd(JSON.stringify(jsonLd));
-  }, [title, description, path, image]);
+    setJsonLd(JSON.stringify(buildSeoGraph(pageDescription, pageImage)));
+  }, [t, i18n.language, page, path, image, keywords]);
 
   return null;
 }

@@ -1,0 +1,394 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre Nosotros",
+    "menu": "Menú",
+    "gallery": "Galería",
+    "events": "Eventos",
+    "reservations": "Reservas",
+    "location": "Ubicación",
+    "contact": "Contacto",
+    "book": "Reservar",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "mainNav": "Navegación principal",
+    "homeAria": "Plan B - Inicio"
+  },
+  "language": {
+    "label": "Idioma",
+    "es": "ES",
+    "en": "EN",
+    "fr": "FR"
+  },
+  "common": {
+    "brandTagline": "Bar, Pizzería & Lounge",
+    "reserveTable": "Reservar Mesa",
+    "viewMenu": "Ver menú",
+    "viewMenuCard": "Ver carta",
+    "openMaps": "Abrir en Google Maps",
+    "sendWhatsApp": "Enviar por WhatsApp",
+    "contactWhatsApp": "Contactar por WhatsApp",
+    "all": "Todas",
+    "scrollToTop": "Subir al inicio"
+  },
+  "seo": {
+    "siteTitle": "Plan B | Bar, Pizzería & Lounge Premium en Lloret de Mar",
+    "siteDescription": "Plan B: bar, pizzería y lounge premium en Lloret de Mar. Pizzas artesanales, coctelería de autor y retransmisión de todos los partidos del Mundial 2026.",
+    "siteKeywords": "pizzería Lloret de Mar, pizza Lloret de Mar, bar Lloret de Mar, ver mundial 2026 Lloret, Plan B bar",
+    "pages": {
+      "home": {
+        "title": "Bar, Pizzería & Lounge - Inicio",
+        "description": "Plan B en Lloret de Mar: pizzería con pizzas artesanales, bar lounge con coctelería de autor y retransmisión de todos los partidos del Mundial 2026."
+      },
+      "menu": {
+        "title": "Menú & Pizzas - Pizzería Plan B",
+        "description": "Carta de pizzería y restaurante en Lloret de Mar: pizzas artesanales, hamburguesas, pasta, carnes, cócteles y más en Plan B.",
+        "keywords": "pizzería Lloret de Mar, carta pizzas Lloret, pizza artesanal, menú Plan B"
+      },
+      "events": {
+        "title": "Eventos & Mundial 2026 - Bar Plan B",
+        "description": "Ver todos los partidos del Mundial 2026 en Plan B, Lloret de Mar. Bar pizzería con pantallas en directo y reserva de mesa.",
+        "keywords": "ver mundial 2026 Lloret de Mar, partidos mundial bar, bar fútbol Lloret"
+      },
+      "about": {
+        "title": "Sobre Nosotros - Bar & Pizzería Plan B",
+        "description": "Conoce Plan B: bar, pizzería y lounge premium en Lloret de Mar. Pizzas artesanales, coctelería de autor y ambiente nocturno."
+      },
+      "gallery": {
+        "title": "Galería - Bar & Pizzería Plan B",
+        "description": "Galería de Plan B en Lloret de Mar: ambiente lounge, terraza, barra de coctelería, pizzas y gastronomía premium."
+      },
+      "reservations": {
+        "title": "Reservas - Bar & Pizzería Plan B",
+        "description": "Reserva mesa en Plan B, Lloret de Mar. Bar pizzería con coctelería premium. Reserva para cenar o ver el Mundial 2026."
+      },
+      "location": {
+        "title": "Ubicación - Pizzería & Bar Plan B",
+        "description": "Plan B en Lloret de Mar, junto a la playa. Bar pizzería en Calle Santa Clotilde, 28. Dirección, mapa y horarios."
+      },
+      "contact": {
+        "title": "Contacto - Bar & Pizzería Plan B",
+        "description": "Contacta con Plan B en Lloret de Mar. Bar pizzería para reservas, eventos privados o consultas sobre el Mundial 2026."
+      }
+    }
+  },
+  "home": {
+    "hero": {
+      "tagline": "Bar, Pizzería & Lounge",
+      "h1": "Plan B | Bar, Pizzería & Lounge en Lloret de Mar",
+      "subtitle": "Bar y pizzería premium en Lloret de Mar. Pizzas artesanales, coctelería de autor y todos los partidos del Mundial 2026 en directo.",
+      "reserveTable": "Reservar Mesa",
+      "viewMenu": "Ver menú"
+    },
+    "proposal": {
+      "eyebrow": "Nuestra propuesta",
+      "title": "Una noche con identidad propia",
+      "pizza": { "title": "Pizzas artesanales", "description": "Pizzas personalizables con bases, quesos e ingredientes premium al estilo pizzería." },
+      "cocktails": { "title": "Cócteles signature", "description": "Creaciones únicas con ingredientes premium y estilo europeo." },
+      "worldCup": { "title": "Mundial 2026 en directo", "description": "Retransmisión de todos los partidos con pantallas, ambiente lounge y buena gastronomía." }
+    },
+    "highlights": {
+      "eyebrow": "Destacados",
+      "title": "Sabores y sensaciones",
+      "description": "Descubre un menú donde cada trago y cada plato está diseñado para elevar la experiencia de noche.",
+      "pizza": "Pizzas artesanales",
+      "cocktails": "Cócteles de autor",
+      "worldCup": "Mundial 2026 en directo"
+    },
+    "ambiance": {
+      "eyebrow": "Ambiente",
+      "title": "Espacios creados para la noche",
+      "description": "Un diseño premium pensado para la conversación, la música y el placer de compartir.",
+      "foodAlt": "Gastronomía Plan B",
+      "interiorAlt": "Interior lounge de Plan B",
+      "barAlt": "Barra de coctelería Plan B"
+    },
+    "events": {
+      "eyebrow": "Eventos",
+      "title": "Próximas noches",
+      "worldCup": {
+        "title": "Mundial 2026 — Todos los partidos",
+        "description": "Vive cada encuentro en directo con pizzas, coctelería y ambiente premium.",
+        "date": "11 Jun – 19 Jul 2026"
+      },
+      "pizzaNight": {
+        "title": "Noches de pizza & cóctel",
+        "description": "Combina nuestras pizzas artesanales con coctelería de autor en Lloret de Mar.",
+        "date": "Todos los días"
+      }
+    },
+    "testimonials": {
+      "eyebrow": "Testimonios",
+      "title": "Historias de la noche Plan B",
+      "marta": { "quote": "Un bar con una atmósfera única, ideal para comenzar la noche.", "author": "Marta, Barcelona" },
+      "joan": { "quote": "Cócteles originales y un ambiente muy cuidado. Perfecto para grupos.", "author": "Joan, Girona" }
+    }
+  },
+  "about": {
+    "eyebrow": "Sobre nosotros",
+    "title": "La esencia de Plan B",
+    "intro": "Plan B es un bar & lounge premium en Lloret de Mar, creado para los amantes del diseño, la coctelería y la experiencia social de alta calidad.",
+    "p1": "Nuestra filosofía combina una atmósfera nocturna envolvente con una carta de autor y un servicio atento. Cada detalle está pensado para ofrecer una propuesta distinguida.",
+    "p2": "Desde la selección de ingredientes hasta el diseño del espacio, buscamos la elegancia moderna y el confort para crear noches memorables.",
+    "exteriorAlt": "Exterior de Plan B en Lloret de Mar",
+    "philosophy": { "title": "Filosofía", "description": "Diseño, sabor y ambiente se conjugan en cada detalle para una experiencia premium." },
+    "experience": { "title": "Experiencia", "description": "Un espacio social con música seleccionada y una atmósfera que invita a quedarse." },
+    "values": { "title": "Valores", "description": "Calidad, exclusividad, hospitalidad y estilo europeo contemporáneo." },
+    "premium": { "title": "Ambiente premium", "description": "Espacios diseñados para disfrutar la noche con estilo. Iluminación suave, materiales nobles y una disposición que favorece la conversación.", "alt": "Ambiente interior Plan B" },
+    "cocktails": { "title": "Coctelería de autor", "description": "Aprovechamos técnicas contemporáneas y recetas clásicas reinventadas con ingredientes selectos para crear una oferta de bebidas única.", "alt": "Coctelería de autor Plan B" }
+  },
+  "menu": {
+    "eyebrow": "Plan B",
+    "title": "Carta & Pizzas",
+    "intro": "Pizzería y restaurante en Lloret de Mar con pizzas artesanales personalizables, sabores mediterráneos y coctelería de autor. Ideal para cenar antes o durante los partidos del Mundial 2026.",
+    "featuredDishAlt": "Plato destacado de Plan B",
+    "mainDishAlt": "Plato principal de Plan B",
+    "navAria": "Categorías del menú",
+    "basePrice": "Precio base",
+    "sections": {
+      "entrantes": "Entrantes",
+      "ensaladas": "Ensaladas",
+      "hamburguesas": "Hamburguesas",
+      "carnes": "Carnes",
+      "pescados": "Pescados",
+      "pasta": "Pasta",
+      "pizzas": "Pizzas",
+      "bebidas": "Bebidas",
+      "cervezas": "Cervezas",
+      "vinos": "Sangría y vinos",
+      "botellas": "Botellas",
+      "cubatas": "Cubatas",
+      "cocktails": "Cocktails"
+    },
+    "descriptions": {
+      "hamburguesas": "Elige tu pan, carne y uno de nuestros modelos exclusivos PLAN B.",
+      "pasta": "Elige tipo de pasta y salsa. Precio base por ración.",
+      "pizzas": "Nuestra carta de pizzería en Lloret de Mar: personaliza tu pizza con bases, quesos e ingredientes premium.",
+      "cocktails": "Todos nuestros cócteles de autor a {{price}}."
+    },
+    "labels": {
+      "pastaTypes": "Tipos de pasta",
+      "sauces": "Salsas",
+      "pizzaBases": "Bases disponibles",
+      "cheeses": "Quesos disponibles",
+      "ingredients150": "Ingredientes +1,50 €",
+      "ingredients200": "Ingredientes +2 €",
+      "supplement": "Suplemento por ingrediente",
+      "availableBreads": "Panes disponibles",
+      "availableMeats": "Carnes disponibles",
+      "extraMeat": "Extra doble carne",
+      "extraFries": "Extra patatas"
+    },
+    "spirits": { "vodka": "Vodka", "gin": "Gin", "whisky": "Whisky", "ron": "Ron" },
+    "items": {
+      "bravas": { "name": "Bravas" },
+      "alitas-pollo": { "name": "Alitas de Pollo" },
+      "fingers-pollo": { "name": "Fingers de Pollo" },
+      "nachos-3-salsas": { "name": "Nachos 3 Salsas" },
+      "aros-cebolla": { "name": "Aros de cebolla" },
+      "huevos-estrellados": { "name": "Huevos estrellados" },
+      "pan-ajo": { "name": "Pan de ajo" },
+      "ensalada-cesar": { "name": "Ensalada César", "description": "Lechuga, pollo, parmesano, aderezo César, pan tostado, nueces y queso." },
+      "ensalada-caprese": { "name": "Ensalada Caprese", "description": "Tomate, mozzarella, albahaca, crema de balsámico." },
+      "ensalada-tropical": { "name": "Ensalada Tropical", "description": "Corazones de lechuga romana, pollo, membrillo, nueces y queso de cabra." },
+      "chuleton": { "name": "Chuletón" },
+      "entrecot": { "name": "Entrecot" },
+      "costillas-bbq": { "name": "Costillas BBQ" },
+      "medio-pollo": { "name": "½ Pollo" },
+      "salmon": { "name": "Salmón" },
+      "dorada": { "name": "Dorada" },
+      "fish-chips": { "name": "Fish & Chips" },
+      "coca-cola": { "name": "Coca-Cola" },
+      "coca-cola-zero": { "name": "Coca-Cola Zero" },
+      "fanta-limon": { "name": "Fanta Limón" },
+      "fanta-naranja": { "name": "Fanta Naranja" },
+      "aquarius": { "name": "Aquarius" },
+      "tonica-schweppes": { "name": "Tónica Schweppes" },
+      "sprite": { "name": "Sprite" },
+      "nestea": { "name": "Nestea" },
+      "agua": { "name": "Agua" },
+      "agua-gas": { "name": "Agua con gas" },
+      "zumo": { "name": "Zumo" },
+      "cana": { "name": "Caña" },
+      "jarra": { "name": "Jarra" },
+      "tercio": { "name": "Tercio" },
+      "desperados": { "name": "Desperados" },
+      "sangria-vino-1l": { "name": "Sangría de vino 1L" },
+      "sangria-cava-1l": { "name": "Sangría de cava 1L" },
+      "copa-sangria-vino": { "name": "Copa de sangría vino" },
+      "copa-vino-tinto": { "name": "Copa de vino tinto casa" },
+      "copa-vino-blanco": { "name": "Copa de vino blanco casa" },
+      "copa-vino-rosado": { "name": "Copa de vino rosado casa" },
+      "copa-cava": { "name": "Copa de cava" },
+      "botella-verdejo": { "name": "Botella Verdejo blanco" },
+      "botella-rioja": { "name": "Botella Rioja" },
+      "botella-cava": { "name": "Botella Cava Brut Nature" },
+      "cubata-normal": { "name": "Cubata Normal" },
+      "cubata-premium": { "name": "Cubata Premium" }
+    },
+    "burgers": {
+      "brioche": "Brioche",
+      "pan-sin-gluten": "Pan sin gluten",
+      "ternera": "Ternera",
+      "pollo-crujiente": "Pollo crujiente",
+      "vegetariana": "Vegetariana",
+      "plan-b": { "name": "PLAN B", "description": "Lechuga, tomate, cebolla, bacon, huevo y queso cheddar." },
+      "plan-b2": { "name": "PLAN B²", "description": "Lechuga, tomate, doble carne y cebolla caramelizada." },
+      "plan-c": { "name": "PLAN C", "description": "Doble queso cheddar, cebolla plancha, lechuga y tomate." },
+      "plan-d": { "name": "PLAN D", "description": "Lechuga, tomate, queso cheddar, bacon y aros de cebolla." }
+    },
+    "pasta": {
+      "penne": "Penne", "tagliatelle": "Tagliatelle", "espagueti": "Espagueti",
+      "carbonara": "Carbonara", "bolonesa": "Boloñesa", "pesto": "Pesto"
+    },
+    "pizzas": {
+      "normal": "Normal", "base-con-gluten": "Base con gluten", "base-sin-gluten": "Base sin gluten (+1,50€)",
+      "mozzarella": "Mozzarella", "roquefort": "Roquefort", "parmesano": "Parmesano", "provolone": "Provolone",
+      "queso-azul": "Queso azul", "cheddar": "Cheddar", "queso-cabra": "Queso de cabra", "emmental": "Emmental",
+      "aceituna-negra": "Aceituna negra", "tomates-cherry": "Tomates cherry", "champinones": "Champiñones",
+      "pimiento": "Pimiento", "cebolla": "Cebolla", "rucula": "Rúcula",
+      "salami": "Salami", "bacon-napoles": "Bacon de Nápoles", "atun": "Atún", "pepperoni": "Pepperoni",
+      "jamon-dulce": "Jamón dulce", "kebab": "Kebab", "jamon-serrano": "Jamón serrano", "pollo-asado": "Pollo asado"
+    },
+    "cocktails": {
+      "porn-star-martini": { "name": "Porn Star Martini", "description": "Vodka infusionado con vainilla, maracuyá y zumo de limón natural." },
+      "galaxy": { "name": "Galaxy", "description": "Vodka, licor de arándano y zumo de limón." },
+      "pink-panther": { "name": "Pink Panther", "description": "Gin, sirope de fresa y zumo de limón." },
+      "whiskey-sour": { "name": "Whiskey Sour", "description": "Whisky, zumo de limón, azúcar y clara de huevo." },
+      "bourbon-smash": { "name": "Bourbon Smash", "description": "Bourbon, frambuesa y sirope de azúcar." },
+      "honey-whiskey-fizz": { "name": "Honey Whiskey Fizz", "description": "Whiskey, miel y licor de naranja." },
+      "between-the-sheets": { "name": "Between the Sheets", "description": "Ron infusionado con mango, sirope de azúcar y zumo de lima." },
+      "mojito": { "name": "Mojito", "description": "Ron, menta, lima y azúcar." },
+      "cherry-cabaret": { "name": "Cherry Cabaret", "description": "Ron, sirope de cereza, arándano y zumo de lima." },
+      "coconut-kiss": { "name": "Coconut Kiss", "description": "Ron, sirope de coco, zumo de piña y lima." }
+    }
+  },
+  "gallery": {
+    "eyebrow": "Galería",
+    "title": "Ambiente e inspiración",
+    "description": "Navega nuestras categorías visuales y descubre el estilo nocturno que define a Plan B.",
+    "categories": { "ambiente": "Ambiente", "coctel": "Cócteles", "gastronomia": "Gastronomía", "eventos": "Eventos" },
+    "images": {
+      "exterior": { "title": "Terraza Plan B", "description": "Vistas exteriores y ambiente nocturno en Lloret de Mar" },
+      "interior": { "title": "Salón interior", "description": "Espacio lounge con iluminación cálida y diseño premium" },
+      "barra": { "title": "Barra principal", "description": "Coctelería de autor servida en nuestra barra" },
+      "coctel-01": { "title": "Cóctel signature", "description": "Creaciones de autor con presentación cuidada" },
+      "coctel-02": { "title": "Mixología premium", "description": "Bebidas preparadas al momento con ingredientes selectos" },
+      "coctel-03": { "title": "Coctelería Plan B", "description": "Sabores tropicales y clásicos reinventados" },
+      "coctel-04": { "title": "Tragos de la casa", "description": "Nuestra selección de cócteles exclusivos" },
+      "comida-01": { "title": "Gastronomía", "description": "Platos y tapas para compartir en buena compañía" },
+      "comida-02": { "title": "Cocina Plan B", "description": "Sabores mediterráneos con un toque premium" }
+    }
+  },
+  "events": {
+    "eyebrow": "Eventos",
+    "title": "Eventos & Mundial 2026",
+    "intro": "En Plan B, bar y pizzería de Lloret de Mar, retransmitimos todos los partidos del Mundial 2026 en directo. Reserva tu mesa, pide pizza artesanal y disfruta del fútbol con coctelería premium y ambiente lounge.",
+    "reserveWhatsApp": "Reservar por WhatsApp",
+    "items": {
+      "mundial-2026": {
+        "title": "Mundial 2026 — Todos los partidos en vivo",
+        "date": "11 Jun – 19 Jul 2026",
+        "time": "Según calendario oficial",
+        "summary": "En Plan B retransmitimos todos los partidos del Mundial FIFA 2026 en Lloret de Mar. Pantallas en directo, pizzas artesanales, coctelería de autor y ambiente lounge premium. Reserva tu mesa y no te pierdas ningún partido."
+      }
+    }
+  },
+  "reservations": {
+    "eyebrow": "Reservas",
+    "title": "Reserva tu mesa",
+    "intro": "Completa el formulario y nos contactaremos vía WhatsApp para confirmar tu reserva en Plan B.",
+    "schedule": { "title": "Horarios", "days": "Lunes - Domingo", "hours": "13:00 - 16:00\n17:00 - 01:00" },
+    "directContact": "Contacto directo",
+    "form": {
+      "name": "Nombre completo",
+      "phone": "Teléfono",
+      "email": "Email (opcional)",
+      "date": "Fecha",
+      "time": "Hora",
+      "guests": "Número de personas",
+      "guestsAria": "Número de personas",
+      "notes": "Comentarios (opcional)",
+      "notesAria": "Comentarios adicionales para la reserva",
+      "notesPlaceholder": "Alergias, preferencias, ocasión especial...",
+      "phonePlaceholder": "+34...",
+      "success": "✓ Se abrió WhatsApp. Envía el mensaje para confirmar tu reserva.",
+      "submit": "Enviar por WhatsApp"
+    }
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "title": "Hablemos",
+    "intro": "¿Tienes dudas o quieres reservar un evento privado? Contáctanos vía WhatsApp y te responderemos a la brevedad.",
+    "details": {
+      "title": "Datos de contacto",
+      "address": "Dirección: Av. de Joan Llaverias, 47, Lloret de Mar",
+      "phone": "Teléfono",
+      "hours": "Horario de atención: 13:00 - 16:00 y 17:00 - 01:00"
+    },
+    "whatsappDirect": "WhatsApp directo",
+    "form": {
+      "name": "Nombre",
+      "phone": "Teléfono (opcional)",
+      "message": "Mensaje",
+      "phonePlaceholder": "+34...",
+      "messagePlaceholder": "Cuéntanos cómo podemos ayudarte...",
+      "success": "✓ Se abrió WhatsApp. Envía tu consulta para que te ayudemos.",
+      "submit": "Enviar por WhatsApp"
+    }
+  },
+  "location": {
+    "eyebrow": "Ubicación",
+    "title": "Encuéntranos en Lloret de Mar",
+    "intro": "Visítanos en una ubicación privilegiada junto a la playa, con acceso directo a la mejor vida nocturna de la ciudad.",
+    "imageAlt": "Ubicación de Plan B en Lloret de Mar",
+    "details": {
+      "title": "Datos de la casa",
+      "address": "Dirección: Calle Santa Clotilde, 28 - Playa",
+      "city": "Lloret de Mar, 17310 Girona, España",
+      "schedule": "Horario: Lun - Dom 13:00 - 16:00 y 17:00 - 01:00",
+      "phone": "Teléfono",
+      "email": "Email"
+    },
+    "mapTitle": "Ubicación de Plan B en Lloret de Mar",
+    "mapAria": "Mapa interactivo de la ubicación de Plan B"
+  },
+  "footer": {
+    "description": "Bar & pizzería en Lloret de Mar. Pizzas artesanales, coctelería de autor, ambiente nocturno y todos los partidos del Mundial 2026 en directo.",
+    "contact": "Contacto",
+    "schedule": "Horario",
+    "scheduleHours": "Lun - Dom: 13:00 - 16:00 y 17:00 - 01:00",
+    "social": "Redes",
+    "copyright": "© 2026 Plan B. Sitio diseñado para una experiencia premium en Lloret de Mar."
+  },
+  "whatsapp": {
+    "reserveTable": "Hola Plan B, quiero reservar una mesa",
+    "inquiry": "Hola Plan B, tengo una consulta",
+    "eventReserve": "Hola Plan B, quiero reservar para el evento: {{event}} - {{date}} a las {{time}}",
+    "reservation": {
+      "title": "🍾 *Solicitud de Reserva - Plan B*",
+      "name": "👤 Nombre",
+      "date": "📅 Fecha",
+      "time": "⏰ Hora",
+      "guests": "👥 Personas",
+      "phone": "📱 Teléfono",
+      "email": "📧 Email",
+      "notes": "📝 Comentarios"
+    },
+    "contactMsg": {
+      "title": "💬 *Mensaje de Contacto - Plan B*",
+      "name": "👤 Nombre",
+      "phone": "📱 Teléfono",
+      "message": "📝 Mensaje"
+    }
+  },
+  "validation": {
+    "nameMin": "Ingrese su nombre",
+    "phoneInvalid": "Teléfono inválido",
+    "emailInvalid": "Email inválido",
+    "dateRequired": "Seleccione una fecha",
+    "timeRequired": "Seleccione una hora",
+    "guestsMin": "Indique número de personas",
+    "messageMin": "Mensaje demasiado corto"
+  }
+}

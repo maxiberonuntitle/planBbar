@@ -2,11 +2,12 @@ import { images } from './images';
 
 export type EventItem = {
   id: string;
-  title: string;
-  date: string;
-  time: string;
-  summary: string;
   image: string;
 };
 
-export const events: EventItem[] = [];
+export const events: EventItem[] = [
+  {
+    id: 'mundial-2026',
+    image: images.barra,
+  },
+];

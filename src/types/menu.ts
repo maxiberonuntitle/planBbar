@@ -1,29 +1,20 @@
-/** Cadena preparada para futuras traducciones (i18n). */
-export type TranslatableString = string;
-
 export interface MenuItem {
   id: string;
-  nombre: TranslatableString;
   precio: number;
-  descripcion?: TranslatableString;
 }
 
 export interface MenuSection {
   id: string;
-  titulo: TranslatableString;
-  descripcion?: TranslatableString;
 }
 
 export interface BurgerPlan {
   id: string;
-  nombre: TranslatableString;
   precio: number;
-  descripcion: TranslatableString;
 }
 
 export interface Burger {
-  panes: TranslatableString[];
-  carnes: TranslatableString[];
+  panes: string[];
+  carnes: string[];
   extraCarne: number;
   extraPatatas: number;
   planes: BurgerPlan[];
@@ -31,16 +22,16 @@ export interface Burger {
 
 export interface Pizza {
   precioBase: number;
-  bases: TranslatableString[];
-  quesos: TranslatableString[];
-  ingredientes150: TranslatableString[];
-  ingredientes200: TranslatableString[];
+  bases: string[];
+  quesos: string[];
+  ingredientes150: string[];
+  ingredientes200: string[];
 }
 
 export interface Pasta {
   precioBase: number;
-  tipos: TranslatableString[];
-  salsas: TranslatableString[];
+  tipos: string[];
+  salsas: string[];
 }
 
 export interface Drink extends MenuItem {}
@@ -49,8 +40,6 @@ export type CocktailSpirit = 'vodka' | 'gin' | 'whisky' | 'ron';
 
 export interface CocktailItem {
   id: string;
-  nombre: TranslatableString;
-  descripcion: TranslatableString;
 }
 
 export interface Cocktails {
@@ -77,25 +66,20 @@ export interface MenuData {
   cocktails: Cocktails;
 }
 
-export const COCKTAIL_SPIRIT_LABELS: Record<CocktailSpirit, TranslatableString> = {
-  vodka: 'Vodka',
-  gin: 'Gin',
-  whisky: 'Whisky',
-  ron: 'Ron',
-};
+export const COCKTAIL_SPIRITS: CocktailSpirit[] = ['vodka', 'gin', 'whisky', 'ron'];
 
 export const MENU_SECTIONS: MenuSection[] = [
-  { id: 'entrantes', titulo: 'Entrantes' },
-  { id: 'ensaladas', titulo: 'Ensaladas' },
-  { id: 'hamburguesas', titulo: 'Hamburguesas' },
-  { id: 'carnes', titulo: 'Carnes' },
-  { id: 'pescados', titulo: 'Pescados' },
-  { id: 'pasta', titulo: 'Pasta' },
-  { id: 'pizzas', titulo: 'Pizzas' },
-  { id: 'bebidas', titulo: 'Bebidas' },
-  { id: 'cervezas', titulo: 'Cervezas' },
-  { id: 'vinos', titulo: 'Sangría y vinos' },
-  { id: 'botellas', titulo: 'Botellas' },
-  { id: 'cubatas', titulo: 'Cubatas' },
-  { id: 'cocktails', titulo: 'Cocktails' },
+  { id: 'entrantes' },
+  { id: 'ensaladas' },
+  { id: 'hamburguesas' },
+  { id: 'carnes' },
+  { id: 'pescados' },
+  { id: 'pasta' },
+  { id: 'pizzas' },
+  { id: 'bebidas' },
+  { id: 'cervezas' },
+  { id: 'vinos' },
+  { id: 'botellas' },
+  { id: 'cubatas' },
+  { id: 'cocktails' },
 ];

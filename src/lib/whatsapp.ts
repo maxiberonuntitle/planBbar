@@ -1,10 +1,4 @@
-export const WHATSAPP_NUMBER = '393883732257';
-export const WHATSAPP_PHONE_DISPLAY = '+39 388 373 22 57';
-export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
-
-export function encodeWhatsAppMessage(message: string): string {
-  return encodeURIComponent(message);
-}
+import i18n from '../i18n';
 
 export function generateReservationMessage(data: {
   name: string;
@@ -15,16 +9,17 @@ export function generateReservationMessage(data: {
   email?: string;
   notes?: string;
 }): string {
+  const t = i18n.t.bind(i18n);
   const lines = [
-    '🍾 *Solicitud de Reserva - Plan B*',
+    t('whatsapp.reservation.title'),
     '',
-    `👤 Nombre: ${data.name}`,
-    `📅 Fecha: ${data.date}`,
-    `⏰ Hora: ${data.time}`,
-    `👥 Personas: ${data.guests}`,
-    ...(data.phone ? [`📱 Teléfono: ${data.phone}`] : []),
-    ...(data.email ? [`📧 Email: ${data.email}`] : []),
-    ...(data.notes ? [`📝 Comentarios: ${data.notes}`] : []),
+    `${t('whatsapp.reservation.name')}: ${data.name}`,
+    `${t('whatsapp.reservation.date')}: ${data.date}`,
+    `${t('whatsapp.reservation.time')}: ${data.time}`,
+    `${t('whatsapp.reservation.guests')}: ${data.guests}`,
+    ...(data.phone ? [`${t('whatsapp.reservation.phone')}: ${data.phone}`] : []),
+    ...(data.email ? [`${t('whatsapp.reservation.email')}: ${data.email}`] : []),
+    ...(data.notes ? [`${t('whatsapp.reservation.notes')}: ${data.notes}`] : []),
   ];
   return lines.join('\n');
 }
@@ -34,36 +29,22 @@ export function generateContactMessage(data: {
   phone?: string;
   message: string;
 }): string {
+  const t = i18n.t.bind(i18n);
   const lines = [
-    '💬 *Mensaje de Contacto - Plan B*',
+    t('whatsapp.contactMsg.title'),
     '',
-    `👤 Nombre: ${data.name}`,
-    ...(data.phone ? [`📱 Teléfono: ${data.phone}`] : []),
+    `${t('whatsapp.contactMsg.name')}: ${data.name}`,
+    ...(data.phone ? [`${t('whatsapp.contactMsg.phone')}: ${data.phone}`] : []),
     '',
-    `📝 Mensaje:\n${data.message}`,
+    `${t('whatsapp.contactMsg.message')}:\n${data.message}`,
   ];
   return lines.join('\n');
 }
 
-export function generateEventReservationMessage(data: {
-  eventTitle: string;
-  name: string;
-  date: string;
-  time: string;
-  guests: number;
-  phone?: string;
-  email?: string;
-}): string {
-  const lines = [
-    '🎉 *Reserva de Evento - Plan B*',
-    '',
-    `🎭 Evento: ${data.eventTitle}`,
-    `👤 Nombre: ${data.name}`,
-    `📅 Fecha del evento: ${data.date}`,
-    `⏰ Hora: ${data.time}`,
-    `👥 Personas: ${data.guests}`,
-    ...(data.phone ? [`📱 Teléfono: ${data.phone}`] : []),
-    ...(data.email ? [`📧 Email: ${data.email}`] : []),
-  ];
-  return lines.join('\n');
+export const WHATSAPP_NUMBER = '393883732257';
+export const WHATSAPP_PHONE_DISPLAY = '+39 388 373 22 57';
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+export function encodeWhatsAppMessage(message: string): string {
+  return encodeURIComponent(message);
 }

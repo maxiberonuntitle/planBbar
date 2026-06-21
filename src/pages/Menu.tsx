@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import Seo from '../components/layout/Seo';
 import MenuSection from '../components/menu/MenuSection';
 import MenuItem from '../components/menu/MenuItem';
@@ -8,14 +9,7 @@ import CocktailCard from '../components/menu/CocktailCard';
 import PriceTag from '../components/menu/PriceTag';
 import { menuData, formatPrice } from '../data/menu';
 import { images } from '../data/images';
-import {
-  COCKTAIL_SPIRIT_LABELS,
-  MENU_SECTIONS,
-  type CocktailSpirit,
-  type MenuItem as MenuItemType,
-} from '../types/menu';
-
-const COCKTAIL_SPIRITS: CocktailSpirit[] = ['vodka', 'gin', 'whisky', 'ron'];
+import { COCKTAIL_SPIRITS, MENU_SECTIONS, type MenuItem as MenuItemType } from '../types/menu';
 
 function ItemGrid({ items }: { items: MenuItemType[] }) {
   return (
@@ -27,17 +21,15 @@ function ItemGrid({ items }: { items: MenuItemType[] }) {
   );
 }
 
-function TagList({ title, items, accent }: { title: string; items: string[]; accent?: string }) {
+function TagList({ title, items, translatePrefix, accent }: { title: string; items: string[]; translatePrefix: string; accent?: string }) {
+  const { t } = useTranslation();
   return (
     <div className="rounded-2xl border border-white/10 bg-black/60 p-5 transition hover:border-gold/30">
       <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">{title}</h3>
       <ul className="mt-3 flex flex-wrap gap-2">
         {items.map((item) => (
-          <li
-            key={item}
-            className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/75 transition hover:border-gold/40 hover:text-gold"
-          >
-            {item}
+          <li key={item} className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/75 transition hover:border-gold/40 hover:text-gold">
+            {t(`${translatePrefix}.${item}`)}
           </li>
         ))}
       </ul>
@@ -47,115 +39,100 @@ function TagList({ title, items, accent }: { title: string; items: string[]; acc
 }
 
 export default function Menu() {
+  const { t } = useTranslation();
   const [activeSection, setActiveSection] = useState(MENU_SECTIONS[0].id);
 
-  const selectedSectionContent = (() => {
+  const selectedSectionContent = useMemo(() => {
     switch (activeSection) {
       case 'entrantes':
         return (
-          <MenuSection id="entrantes" title="Entrantes">
+          <MenuSection id="entrantes" title={t('menu.sections.entrantes')}>
             <ItemGrid items={menuData.entrantes} />
           </MenuSection>
         );
       case 'ensaladas':
         return (
-          <MenuSection id="ensaladas" title="Ensaladas">
+          <MenuSection id="ensaladas" title={t('menu.sections.ensaladas')}>
             <ItemGrid items={menuData.ensaladas} />
           </MenuSection>
         );
       case 'hamburguesas':
         return (
-          <MenuSection
-            id="hamburguesas"
-            title="Hamburguesas"
-            description="Elige tu pan, carne y uno de nuestros modelos exclusivos PLAN B."
-          >
+          <MenuSection id="hamburguesas" title={t('menu.sections.hamburguesas')} description={t('menu.descriptions.hamburguesas')}>
             <BurgerCard burgers={menuData.hamburguesas} />
           </MenuSection>
         );
       case 'carnes':
         return (
-          <MenuSection id="carnes" title="Carnes">
+          <MenuSection id="carnes" title={t('menu.sections.carnes')}>
             <ItemGrid items={menuData.carnes} />
           </MenuSection>
         );
       case 'pescados':
         return (
-          <MenuSection id="pescados" title="Pescados">
+          <MenuSection id="pescados" title={t('menu.sections.pescados')}>
             <ItemGrid items={menuData.pescados} />
           </MenuSection>
         );
       case 'pasta':
         return (
-          <MenuSection id="pasta" title="Pasta" description="Elige tipo de pasta y salsa. Precio base por ración.">
+          <MenuSection id="pasta" title={t('menu.sections.pasta')} description={t('menu.descriptions.pasta')}>
             <div className="space-y-4">
               <div className="flex items-center justify-between rounded-2xl border border-gold/30 bg-gold/10 p-5">
-                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Precio base</span>
+                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">{t('menu.basePrice')}</span>
                 <PriceTag precio={menuData.pasta.precioBase} className="text-lg" />
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
-                <TagList title="Tipos de pasta" items={menuData.pasta.tipos} />
-                <TagList title="Salsas" items={menuData.pasta.salsas} />
+                <TagList title={t('menu.labels.pastaTypes')} items={menuData.pasta.tipos} translatePrefix="menu.pasta" />
+                <TagList title={t('menu.labels.sauces')} items={menuData.pasta.salsas} translatePrefix="menu.pasta" />
               </div>
             </div>
           </MenuSection>
         );
       case 'pizzas':
         return (
-          <MenuSection
-            id="pizzas"
-            title="Pizzas"
-            description="Personaliza tu pizza con bases, quesos e ingredientes premium."
-          >
+          <MenuSection id="pizzas" title={t('menu.sections.pizzas')} description={t('menu.descriptions.pizzas')}>
             <div className="space-y-4">
               <div className="flex items-center justify-between rounded-2xl border border-gold/30 bg-gold/10 p-5">
-                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Precio base</span>
+                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">{t('menu.basePrice')}</span>
                 <PriceTag precio={menuData.pizzas.precioBase} className="text-lg" />
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
-                <TagList title="Bases disponibles" items={menuData.pizzas.bases} />
-                <TagList title="Quesos disponibles" items={menuData.pizzas.quesos} />
-                <TagList
-                  title="Ingredientes +1,50 €"
-                  items={menuData.pizzas.ingredientes150}
-                  accent="Suplemento por ingrediente"
-                />
-                <TagList
-                  title="Ingredientes +2 €"
-                  items={menuData.pizzas.ingredientes200}
-                  accent="Suplemento por ingrediente"
-                />
+                <TagList title={t('menu.labels.pizzaBases')} items={menuData.pizzas.bases} translatePrefix="menu.pizzas" />
+                <TagList title={t('menu.labels.cheeses')} items={menuData.pizzas.quesos} translatePrefix="menu.pizzas" />
+                <TagList title={t('menu.labels.ingredients150')} items={menuData.pizzas.ingredientes150} translatePrefix="menu.pizzas" accent={t('menu.labels.supplement')} />
+                <TagList title={t('menu.labels.ingredients200')} items={menuData.pizzas.ingredientes200} translatePrefix="menu.pizzas" accent={t('menu.labels.supplement')} />
               </div>
             </div>
           </MenuSection>
         );
       case 'bebidas':
         return (
-          <MenuSection id="bebidas" title="Bebidas">
+          <MenuSection id="bebidas" title={t('menu.sections.bebidas')}>
             <ItemGrid items={menuData.bebidas} />
           </MenuSection>
         );
       case 'cervezas':
         return (
-          <MenuSection id="cervezas" title="Cervezas">
+          <MenuSection id="cervezas" title={t('menu.sections.cervezas')}>
             <ItemGrid items={menuData.cervezas} />
           </MenuSection>
         );
       case 'vinos':
         return (
-          <MenuSection id="vinos" title="Sangría y vinos">
+          <MenuSection id="vinos" title={t('menu.sections.vinos')}>
             <ItemGrid items={menuData.vinos} />
           </MenuSection>
         );
       case 'botellas':
         return (
-          <MenuSection id="botellas" title="Botellas">
+          <MenuSection id="botellas" title={t('menu.sections.botellas')}>
             <ItemGrid items={menuData.botellas} />
           </MenuSection>
         );
       case 'cubatas':
         return (
-          <MenuSection id="cubatas" title="Cubatas">
+          <MenuSection id="cubatas" title={t('menu.sections.cubatas')}>
             <ItemGrid items={menuData.cubatas} />
           </MenuSection>
         );
@@ -163,15 +140,13 @@ export default function Menu() {
         return (
           <MenuSection
             id="cocktails"
-            title="Cocktails"
-            description={`Todos nuestros cócteles de autor a ${formatPrice(menuData.cocktails.precio)}.`}
+            title={t('menu.sections.cocktails')}
+            description={t('menu.descriptions.cocktails', { price: formatPrice(menuData.cocktails.precio) })}
           >
             <div className="space-y-10">
               {COCKTAIL_SPIRITS.filter((spirit) => menuData.cocktails[spirit].length > 0).map((spirit) => (
                 <div key={spirit}>
-                  <h3 className="mb-4 text-lg font-semibold uppercase tracking-[0.25em] text-gold">
-                    {COCKTAIL_SPIRIT_LABELS[spirit]}
-                  </h3>
+                  <h3 className="mb-4 text-lg font-semibold uppercase tracking-[0.25em] text-gold">{t(`menu.spirits.${spirit}`)}</h3>
                   <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
                     {menuData.cocktails[spirit].map((cocktail) => (
                       <CocktailCard key={cocktail.id} cocktail={cocktail} precio={menuData.cocktails.precio} />
@@ -185,16 +160,11 @@ export default function Menu() {
       default:
         return null;
     }
-  })();
+  }, [activeSection, t]);
 
   return (
     <section className="bg-black pt-28 text-cream">
-      <Seo
-        title="Menú - Bar Plan B"
-        description="Carta completa de Plan B en Lloret de Mar: entrantes, hamburguesas, carnes, pizzas, cócteles y más."
-        path="/menu"
-      />
-
+      <Seo page="menu" path="/menu" />
       <div className="mx-auto max-w-6xl px-4 pb-24 sm:px-6 lg:px-8">
         <motion.header
           initial={{ opacity: 0, y: 20 }}
@@ -202,45 +172,20 @@ export default function Menu() {
           transition={{ duration: 0.6 }}
           className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-xl"
         >
-          <img
-            src={images.coctails[1]}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover opacity-30"
-            aria-hidden="true"
-          />
+          <img src={images.coctails[1]} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" aria-hidden="true" />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/60" />
           <div className="relative p-8 sm:p-12 lg:p-16">
-            <p className="text-sm uppercase tracking-[0.35em] text-gold">Plan B</p>
-            <h1 className="mt-4 text-4xl font-semibold text-white sm:text-5xl">Nuestra carta</h1>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-white/70">
-              Sabores mediterráneos y coctelería de autor en un ambiente tropical y elegante. Explora nuestra selección
-              completa.
-            </p>
+            <p className="text-sm uppercase tracking-[0.35em] text-gold">{t('menu.eyebrow')}</p>
+            <h1 className="mt-4 text-4xl font-semibold text-white sm:text-5xl">{t('menu.title')}</h1>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-white/70">{t('menu.intro')}</p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="overflow-hidden rounded-[24px] border border-white/10 bg-white/5">
-                <img
-                  src={images.comida[0]}
-                  alt="Plato destacado de Plan B"
-                  className="h-48 w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="overflow-hidden rounded-[24px] border border-white/10 bg-white/5">
-                <img
-                  src={images.comida[1]}
-                  alt="Plato principal de Plan B"
-                  className="h-48 w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
+              <img src={images.comida[0]} alt={t('menu.featuredDishAlt')} className="h-48 w-full rounded-[24px] border border-white/10 object-cover" loading="lazy" />
+              <img src={images.comida[1]} alt={t('menu.mainDishAlt')} className="h-48 w-full rounded-[24px] border border-white/10 object-cover" loading="lazy" />
             </div>
           </div>
         </motion.header>
 
-        <nav
-          aria-label="Categorías del menú"
-          className="sticky top-[72px] z-30 -mx-4 mt-8 border-b border-white/10 bg-black/90 px-4 py-3 backdrop-blur-xl sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
-        >
+        <nav aria-label={t('menu.navAria')} className="sticky top-[72px] z-30 -mx-4 mt-8 border-b border-white/10 bg-black/90 px-4 py-3 backdrop-blur-xl sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
           <div className="flex flex-wrap justify-center gap-2 pb-1">
             {MENU_SECTIONS.map((section) => (
               <button
@@ -253,15 +198,13 @@ export default function Menu() {
                     : 'border-white/10 bg-white/5 text-white/70 hover:border-gold/40 hover:text-gold'
                 }`}
               >
-                {section.titulo}
+                {t(`menu.sections.${section.id}`)}
               </button>
             ))}
           </div>
         </nav>
 
-        <div className="mt-12">
-          {selectedSectionContent}
-        </div>
+        <div className="mt-12">{selectedSectionContent}</div>
       </div>
     </section>
   );
