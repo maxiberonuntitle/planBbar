@@ -51,8 +51,8 @@ export default function Seo({ page, path, image, keywords }: SeoProps) {
     const pageKeywords =
       keywords ??
       (page ? t(`seo.pages.${page}.keywords`, { defaultValue: t('seo.siteKeywords') }) : t('seo.siteKeywords'));
-    const pageUrl = path ? `https://planbbar.com${path}` : `https://planbbar.com${window.location.pathname}`;
-    const pageImage = image ?? 'https://planbbar.com/images/exterior1.jpg';
+    const pageUrl = path ? `https://planblloret.es${path}` : `https://planblloret.es${window.location.pathname}`;
+    const pageImage = image ?? 'https://planblloret.es/images/exterior1.jpg';
     const locale = i18n.language === 'fr' ? 'fr_FR' : i18n.language === 'en' ? 'en_GB' : 'es_ES';
     const htmlLang = i18n.language?.slice(0, 2) ?? 'es';
 
